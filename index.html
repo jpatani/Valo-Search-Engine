@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Search Engine Powered by Valo</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400|Merriweather:300,300italic" rel="stylesheet">
+
+<link rel="stylesheet" href="./style/normalize.css">
+<link rel="stylesheet" href="./style/standard.css">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+
+    
+    $('input.form-control').keydown(function(e) {
+    if(e.which == 13) {
+
+        
+        event.preventDefault();
+       
+
+   var input = $(this).val();
+
+          searchterm = {
+          "uris"  : [
+          "/streams/demo/infrastructure/apache"
+          ],
+          "query": {
+          "base": "search('" + input + "')",
+          "filters": []
+          },
+          "count" : 10
+          }
+
+        
+
+
+        var results = $.ajax({
+        type: "POST",
+        data :JSON.stringify(searchterm),
+        async: false,
+        url: "http://localhost:8888/ssr/demo/_search",
+        contentType: "application/json",
+        success: function(data) {
+          results = data;
+          console.log(results);
+          return data;
+        }
+        }).responseJSON;
+                
+
+        function drawTable(data) {
+        
+        $("#ResultsTable").html("<h3>Top 10 Most Relevant Search Results</h3>");
+
+        for (var i = 0; i < data.length; i++) {
+        drawRow(data[i]);
+        }
+        }
+
+        function drawRow(rowData) {
+        var row = $("<tr />")
+
+        $("#ResultsTable").append(row); //this will append tr element to table... keep its reference for a while since we will add cels into it
+        row.html($( '<tr><td>' + rowData.data.timestamp + '</td><td>' + rowData.data.message + '</td></tr>' ));
+
+
+
+        }
+
+        $("#ResultsTable").empty()
+        $("#errormessage").empty()
+       
+
+        if (results.items.length > 0) {var table= drawTable(results.items);}
+
+        else {$( "#errormessage" ).html('<h4>Sorry, there are no results for your search</h4>' )}
+        }
+        });
+
+
+
+
+  $("img").hover(function() {
+    $(this).attr("src","./img/valo-logo.png" );
+      }, function() {
+    $(this).attr("src","./img/valo-logo-bw.png" );
+  });
+
+
+
+
+
+
+
+
+   
+});
+ 
+
+
+
+
+
+</script>
+
+
+
+</head><body>
+
+<!-- body -->
+
+
+<div class="center" style="padding-top: 90px;"><a href="http://www.valo.io"><img src="./img/valo-logo.png" alt="Valo Search"></a></div>
+<div class="center"><div class="inner" style="padding-top: 27px;"><h2>My Simple Search Engine Powered by Valo</h2></div></div>
+
+<div class="block" style="padding-top: 39px;">
+
+<form action = '#'  name="newform" action="post" method="post"  class="center" id="newform" style="padding-bottom: 50px;">
+
+  <div class="form-group">
+    <label class="control-label" ></label>
+    <input type="text" name="test1" class="form-control" id="test1"  placeholder="" style="width: 450px; height: 60px; text-align:center;" >
+    
+    </div>
+</form>
+
+
+
+
+
+
+
+
+<table id="ResultsTable" style="padding-top: 100px;"></table>
+
+
+
+<p style="padding-top: 27px; color:red" id="errormessage" ></p>
+
+
+<div class="norm" >
+You have just built a search engine to search NASA log files stored in Valo's semi-structure repository! :)</div>
+
+
+</div>
+
+
+
+</body>
+</html>

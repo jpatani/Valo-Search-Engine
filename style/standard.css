@@ -1,0 +1,107 @@
+
+
+/* basics */
+
+
+body
+{
+	
+}
+a
+{
+     cursor: pointer;
+}
+p
+{
+     padding-top: 13px;
+     margin: 0;
+}
+.clear
+{
+     clear: both;
+}
+.nowrap
+{
+     white-space: nowrap;
+}
+.inner
+{
+     display: inline-block;
+     max-width: 700px;
+     padding: 0 30px;
+}
+.center
+{
+     text-align: center;
+}
+
+.block
+{
+     margin: 0 auto;
+     max-width: 700px;
+     padding: 0 30px; 
+}
+
+
+/* fonts */
+
+
+h2
+{
+     font: 16px/1.7 'Open Sans', sans-serif;
+	color: #333;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+     margin: 0;
+}
+
+h3
+{
+    font: 15px/1.7 'Open Sans', sans-serif;
+    color: #333;
+    text-align:center;  
+    padding-bottom:10px;
+}
+h4
+{
+    color:red;
+    text-align:center;  
+}
+.norm
+{
+     font: 300 16px/1.7 Merriweather, serif;
+	color: #333;
+    padding-top: 27px;
+}
+
+
+
+}
+.head_icon
+{
+     float: left;
+     cursor: pointer;
+     
+}
+
+
+body {
+    font: 12px/16px sans-serif;
+    margin: 10px;
+    padding: 100;
+
+}
+
+
+
+
+td {
+    
+    padding-top: 10px;
+    font: 9px/1.7 'Open Sans', sans-serif;
+}
+
+input[type="text"]
+{
+    font: 300 25px/1.7 Merriweather, serif;
+}
