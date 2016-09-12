@@ -3,32 +3,16 @@
 /* basics */
 
 
-body
-{
-	
-}
 a
 {
      cursor: pointer;
 }
-p
-{
-     padding-top: 13px;
-     margin: 0;
-}
-.clear
-{
-     clear: both;
-}
-.nowrap
-{
-     white-space: nowrap;
-}
+
 .inner
 {
      display: inline-block;
      max-width: 700px;
-     padding: 0 30px;
+     padding: 30px;
 }
 .center
 {
@@ -62,19 +46,14 @@ h3
     text-align:center;  
     padding-bottom:10px;
 }
-h4
-{
-    color:red;
-    text-align:center;  
-}
+
 .norm
 {
-     font: 300 16px/1.7 Merriweather, serif;
+    font: 300 16px/1.7 Merriweather, serif;
 	color: #333;
-    padding-top: 27px;
+    padding-top: 5px;
+    text-align:center;
 }
-
-
 
 }
 .head_icon
@@ -93,15 +72,21 @@ body {
 }
 
 
+input[type="text"]
+{
+    font: 300 25px/1.7 Merriweather, serif;
+}
 
+
+/* table */
+
+.ResultsTable {
+    align : center;
+    padding-top: 300px;
+}
 
 td {
     
     padding-top: 10px;
     font: 9px/1.7 'Open Sans', sans-serif;
-}
-
-input[type="text"]
-{
-    font: 300 25px/1.7 Merriweather, serif;
 }

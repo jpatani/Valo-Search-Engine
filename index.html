@@ -24,28 +24,29 @@ $(document).ready(function() {
     if(e.which == 13) {
 
         
-        event.preventDefault();
+          event.preventDefault();
        
+        // Define the search query
+        var input = $(this).val();
 
-   var input = $(this).val();
-
-          searchterm = {
-          "uris"  : [
-          "/streams/demo/infrastructure/apache"
-          ],
-          "query": {
-          "base": "search('" + input + "')",
-          "filters": []
-          },
-          "count" : 10
-          }
+        valosearch = {
+        "uris"  : [
+        "/streams/demo/infrastructure/apache"
+        ],
+          
+        "query": {
+        "base": "search('" + input + "')",
+        "filters": []
+        },
+        "count" : 10
+        }
 
         
-
+        // HTTP Post to Valo API
 
         var results = $.ajax({
         type: "POST",
-        data :JSON.stringify(searchterm),
+        data :JSON.stringify(valosearch),
         async: false,
         url: "http://localhost:8888/ssr/demo/_search",
         contentType: "application/json",
@@ -56,6 +57,7 @@ $(document).ready(function() {
         }
         }).responseJSON;
                 
+        // Create a results table of the search results
 
         function drawTable(data) {
         
@@ -86,68 +88,55 @@ $(document).ready(function() {
         }
         });
 
-
-
-
+  // Turn Valo logo green when mouse hovers over
   $("img").hover(function() {
     $(this).attr("src","./img/valo-logo.png" );
       }, function() {
     $(this).attr("src","./img/valo-logo-bw.png" );
   });
 
-
-
-
-
-
-
-
    
 });
  
 
-
-
-
-
 </script>
 
+</head>
 
-
-</head><body>
+<body>
 
 <!-- body -->
 
 
-<div class="center" style="padding-top: 90px;"><a href="http://www.valo.io"><img src="./img/valo-logo.png" alt="Valo Search"></a></div>
-<div class="center"><div class="inner" style="padding-top: 27px;"><h2>My Simple Search Engine Powered by Valo</h2></div></div>
+<div class="center" style="padding-top: 90px;">
 
-<div class="block" style="padding-top: 39px;">
+<a href="http://www.valo.io"><img src="./img/valo-logo.png" alt="Valo Search"></a><br><br>
+
+
+<div class="inner" ><h2>My Simple Search Engine Powered by Valo</h2></div></div>
+
+<div class="block" >
 
 <form action = '#'  name="newform" action="post" method="post"  class="center" id="newform" style="padding-bottom: 50px;">
 
   <div class="form-group">
-    <label class="control-label" ></label>
-    <input type="text" name="test1" class="form-control" id="test1"  placeholder="" style="width: 450px; height: 60px; text-align:center;" >
+
+    <input type="text" name="test1" class="form-control"   placeholder="" style="width: 450px; height: 60px; text-align:center;" >
     
+
     </div>
 </form>
 
 
 
 
-
-
-
-
-<table id="ResultsTable" style="padding-top: 100px;"></table>
-
-
-
-<p style="padding-top: 27px; color:red" id="errormessage" ></p>
-
-
 <div class="norm" >
+
+<table id="ResultsTable" align=center></table>
+
+<p id="errormessage" style="color:red"></p>
+
+
 You have just built a search engine to search NASA log files stored in Valo's semi-structure repository! :)</div>
 
 
